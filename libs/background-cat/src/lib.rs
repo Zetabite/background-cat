@@ -12,8 +12,9 @@ pub fn common_mistakes(input: &str) -> Vec<(&str, String)> {
 
 pub(crate) type Check = fn(&str) -> Option<(&str, String)>;
 
-pub(crate) const PARSERS: [Check; 13] = [
+pub(crate) const PARSERS: [Check; 14] = [
     multimc_in_program_files,
+    multimc_in_temp,
     macos_too_new_java,
     multimc_in_onedrive_managed_folder,
     //major_java_version,
@@ -34,6 +35,15 @@ fn multimc_in_program_files(log: &str) -> Option<(&str, String)> {
     const TRIGGER: &str = "Minecraft folder is:\nC:/Program Files";
     if log.contains(TRIGGER) {
         Some(("‼", RESPONSES.get("program-files")?.to_string()))
+    } else {
+        None
+    }
+}
+
+fn multimc_in_temp(log: &str) -> Option<(&str, String)> {
+    const TRIGGER: &str = "Minecraft folder is:\nC:/Users/PC/AppData/Local/Temp";
+    if log.contains(TRIGGER) {
+        Some(("‼", RESPONSES.get("temo-folder")?.to_string()))
     } else {
         None
     }

@@ -12,6 +12,13 @@ lazy_static! {
             }
         ),
         (
+            "temp-folder",
+            indoc! {"
+                Your MultiMC installation is in a temporary folder. Windows will remove it on logout.\n\
+                To prevent data loss, you should move it somewhere else, like your Desktop."
+            }
+        ),
+        (
             "macos-java-too-new",
             indoc! {
             "You are using too new a Java version. Please follow the steps on this wiki page to install 8u241: https://github.com/MultiMC/MultiMC5/wiki/Java-on-macOS"
